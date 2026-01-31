@@ -113,24 +113,11 @@ h6 {
 	--spacing-3xl: 4rem;
 
 	/* ---------------- Borde ---------------- */
-	--border-width: 1px;
 	--border-radius: 0.25rem; /* Borde redondeado */
-
-	/* ---------------- Sombra ---------------- */
-	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-	--shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-	--shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
 
 	/* ---------------- Transiciones ---------------- */
 	--transition-duration: 0.2s;
 	--transition-timing-function: ease-in-out;
-
-	/* ---------------- Breakpoints (Responsive) ---------------- */
-	--breakpoint-sm: 576px;
-	--breakpoint-md: 768px;
-	--breakpoint-lg: 992px;
-	--breakpoint-xl: 1200px;
-	--breakpoint-xxl: 1400px;
 }
 
 html {
@@ -175,10 +162,6 @@ a {
 	transition: color 0.3s ease;
 }
 
-/* a:visited {
-  color: var(--color-indigo-bloom);
-} */
-
 a:hover {
 	color: var(--color-neon-pink);
 	text-decoration: none;
@@ -218,7 +201,7 @@ h1 {
 }
 
 .band-name {
-	font-size: clamp(2rem, 8vw, 4.5rem);
+	font-size: clamp(var(--spacing-xl), 8vw, 4.5rem);
 	font-family: "Neonderthaw", sans-serif;
 	font-style: normal;
 	font-weight: 900;
@@ -230,8 +213,6 @@ h1 {
 		0 0 20px rgba(247, 37, 133, 0.5),
 		0 0 40px rgba(247, 37, 133, 0.3);
 	animation: glow 3s ease-in-out infinite;
-	margin: 0;
-	mix-blend-mode: screen; /* Efecto de luz neón */
 }
 
 @keyframes glow {
@@ -297,47 +278,47 @@ p {
 }
 
 .sky {
-	background: url("/public/assets/images/parallax/cielo.png") no-repeat center;
+	background: url("/public/assets/images/parallax/sky.png") no-repeat center;
 	background-size: cover;
 	transform: translateZ(-600px) scale(3);
 	z-index: 1;
 }
 
 .water {
-	background: url("/public/assets/images/parallax/agua.png") no-repeat center;
+	background: url("/public/assets/images/parallax/water.png") no-repeat center;
 	background-size: cover;
 	transform: translateZ(-400px) scale(2.33333333);
-	z-index: 3;
+	z-index: 2;
 }
 
-.people1 {
-	background: url("/public/assets/images/parallax/rascacielos.png") no-repeat
+.skyscraper {
+	background: url("/public/assets/images/parallax/skyscraper.png") no-repeat
 		center;
 	background-size: cover;
 	transform: translateZ(-250px) scale(1.833333333);
-	z-index: 4;
+	z-index: 3;
 }
 
-.people2 {
+.foreground-back {
 	background: url("/public/assets/images/parallax/foreground-back.webp")
 		no-repeat center;
 	background-size: cover;
 	transform: translateZ(-80px) scale(1.4167);
-	z-index: 5;
+	z-index: 4;
 }
 
-.people3 {
-	background: url("/public/assets/images/parallax/prueboncia.webp") no-repeat
-		center;
+.foreground-front {
+	background: url("/public/assets/images/parallax/foreground-front.webp")
+		no-repeat center;
 	background-size: cover;
 	transform: translateZ(0) scale(1.3);
-	z-index: 6;
+	z-index: 5;
 }
 
 .logo {
 	width: 3rem;
 	height: auto;
-	margin: 2rem;
+	margin: var(--spacing-xl);
 }
 
 .primary-nav {
@@ -346,16 +327,15 @@ p {
 	position: absolute;
 	top: 0;
 	right: 0;
-	margin: 2rem;
+	margin: var(--spacing-xl);
 	z-index: 9;
-	mix-blend-mode: lighten; /* Si la nav está sobre fondo oscuro */
 }
 
 .primary-nav ul {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	gap: 2rem;
+	gap: var(--spacing-xl);
 }
 
 .primary-nav a {
@@ -383,7 +363,7 @@ ul[aria-label="social links"] {
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
-	margin: 2rem 0;
+	margin: var(--spacing-xl) 0;
 }
 
 ul[aria-label="social links"] svg {
@@ -520,14 +500,6 @@ ul[aria-label="social links"] a:hover svg {
 	transform: translateX(var(--vinyl-translate)) rotate(var(--vinyl-rotate));
 }
 
-.album.open .cover {
-	transform: translateX(var(--cover-translate)) rotate(var(--cover-rotate));
-}
-
-.album.open .vinyl {
-	transform: translateX(var(--vinyl-translate)) rotate(var(--vinyl-rotate));
-}
-
 /* FIN PARALLAX*/
 
 main {
@@ -644,7 +616,7 @@ main {
 	letter-spacing: 0.5px;
 	z-index: 2;
 	transition: all 0.3s ease;
-	mix-blend-mode: color-dodge; /* Efecto neon brillante */
+	mix-blend-mode: color-dodge;
 }
 
 .product-card:hover .product-badge {
@@ -658,7 +630,6 @@ main {
 	inset: 0;
 	height: 100%;
 	width: 100%;
-	animation: squiggle 0.5s infinite;
 }
 
 .scribble-path {
@@ -671,24 +642,6 @@ main {
 
 .product-card:hover .scribble-path {
 	stroke-dashoffset: 0;
-}
-
-@keyframes squiggle {
-	0% {
-		filter: url("#squiggle-0");
-	}
-	25% {
-		filter: url("#squiggle-1");
-	}
-	50% {
-		filter: url("#squiggle-2");
-	}
-	75% {
-		filter: url("#squiggle-3");
-	}
-	100% {
-		filter: url("#squiggle-4");
-	}
 }
 
 .product-card img {
@@ -745,7 +698,7 @@ main {
 	padding: 12px;
 	text-align: center;
 	transition: all 0.3s ease;
-	mix-blend-mode: lighten; /* Efecto más luminoso */
+	mix-blend-mode: lighten;
 }
 
 .product-card:hover .feature {
@@ -815,7 +768,7 @@ main {
 	);
 	transform: translateX(-100%);
 	transition: transform 0.6s ease;
-	mix-blend-mode: screen; /* Efecto de brillo en el shine */
+	mix-blend-mode: screen;
 }
 
 .btn-purchase:hover {
@@ -950,7 +903,7 @@ main {
 	);
 	pointer-events: none;
 	z-index: 1;
-	mix-blend-mode: overlay; /* Efecto de scanlines más realista */
+	mix-blend-mode: overlay;
 }
 
 .card__content > * {
@@ -1012,7 +965,7 @@ main {
 		-2px -2px 0 rgba(247, 37, 133, 0.2);
 	filter: saturate(1.3) contrast(1.1);
 	transition: transform 0.3s ease;
-	mix-blend-mode: lighten; /* Efecto de iluminación vintage */
+	mix-blend-mode: lighten;
 }
 
 .info-grid img:hover {
