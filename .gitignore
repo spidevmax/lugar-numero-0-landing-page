@@ -1,0 +1,38 @@
+# Dependencias
+node_modules/
+vendor/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Entornos y configuraciones
+.env
+.env.local
+
+# Logs
+*.log
+
+# Archivos temporales
+tmp/
+temp/
+
+# Builds / compilados
+dist/
+build/
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+
+# Java
+*.class
+
+# Archivos comprimidos
+*.zip
+*.tar.gz
